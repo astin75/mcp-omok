@@ -1,0 +1,10 @@
+[project]
+name = "mcp-omok"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "litellm>=1.72.2",
+    "nicegui>=2.19.0",
+]
