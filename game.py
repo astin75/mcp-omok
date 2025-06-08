@@ -7,6 +7,7 @@ class GomokuGame:
         self.board = [[None for _ in range(self.BOARD_SIZE)] for _ in range(self.BOARD_SIZE)]
         self.current_turn = 'black'
         self.game_over = False
+        self.is_ai_thinking = False
 
     def check_win(self, row, col):
         stone = self.board[row][col]
@@ -27,8 +28,10 @@ class GomokuGame:
             if count >= 5: return True
         return False
 
-    def place_stone(self, row, col):
+    def do_place_stone(self, row, col, available):
         if self.board[row][col] is None and not self.game_over:
+            if not available:
+                return False, None
             self.board[row][col] = self.current_turn
             if self.check_win(row, col):
                 self.game_over = True
